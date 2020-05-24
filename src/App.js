@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Jumbotron, Container } from 'reactstrap'
-import Logo from './logo.svg'
 import WalletForm from './components/WalletForm'
 import List from './components/List'
 
@@ -89,7 +88,6 @@ function App() {
       <Jumbotron fluid>
         <h3 className="display-6">
           Wallet Tracker
-          <img src={Logo} style={{ width: 50, height: 50 }} alt="react-logo" />
         </h3>
         <div>
         <p>
