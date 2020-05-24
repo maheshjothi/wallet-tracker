@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {
-  Form as BTForm,
+  Form,
   FormGroup,
   Input,
   Label,
@@ -9,10 +9,10 @@ import {
   Button
 } from 'reactstrap'
 
-const Form = ({ date, type, name, amount, handleType, handleDate, handleName, handleAmount,  handleSubmitForm, handleClearExpenses }) => (
-  <BTForm style={{ margin: 10 }} onSubmit={handleSubmitForm}>
+const WalletForm = ({ date, type, name, amount, handleType, handleDate, handleName, handleAmount,  handleSubmitForm, handleClearExpenses }) => (
+  <Form style={{ margin: 10 }} onSubmit={handleSubmitForm}>
     <FormGroup className="row">
-        <Label for="exampleDate" sm={2}>Date</Label>
+        <Label for="transactionDate" sm={2}>Date</Label>
         <Col sm={4}>
         <Input
           type="date"
@@ -25,7 +25,7 @@ const Form = ({ date, type, name, amount, handleType, handleDate, handleName, ha
         </Col>
     </FormGroup>
     <FormGroup className="row">
-        <Label for="exampleDate" sm={2}>Type</Label>
+        <Label for="transactionType" sm={2}>Type</Label>
         <Col sm={4}>
         <Input 
         type="select"
@@ -41,7 +41,7 @@ const Form = ({ date, type, name, amount, handleType, handleDate, handleName, ha
         </Col>
     </FormGroup>
     <FormGroup className="row">
-      <Label for="exampleEmail" sm={2}>
+      <Label for="expenseName" sm={2}>
         Income / Expense
       </Label>
       <Col sm={4}>
@@ -51,12 +51,13 @@ const Form = ({ date, type, name, amount, handleType, handleDate, handleName, ha
           id="expenseName"
           placeholder="Income / Expense Details"
           value={name}
+          autoComplete="nope"
           onChange={handleName}
         />
       </Col>
     </FormGroup>
     <FormGroup className="row">
-      <Label for="exampleEmail" sm={2}>
+      <Label for="expenseAmount" sm={2}>
         Amount(Rs)
       </Label>
       <Col sm={4}>
@@ -76,7 +77,7 @@ const Form = ({ date, type, name, amount, handleType, handleDate, handleName, ha
     <Button type="submit" color="danger" onClick={handleClearExpenses}>
       Delete
     </Button>
-  </BTForm>
+  </Form>
 )
 
-export default Form
+export default WalletForm

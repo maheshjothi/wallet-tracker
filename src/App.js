@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Jumbotron, Container } from 'reactstrap'
 import Logo from './logo.svg'
-import Form from './components/Form'
+import WalletForm from './components/WalletForm'
 import List from './components/List'
 
 const expensesList = localStorage.getItem('expenses')
@@ -14,7 +14,7 @@ function App() {
   const [date, setDate] = useState('')
   const [type, setType] = useState('')
   const [name, setName] = useState('')
-  const [amount, setAmount] = useState('')
+  var [amount, setAmount] = useState('')
   
   const handleDate = event => {
     setDate(event.target.value)
@@ -38,6 +38,7 @@ function App() {
     if (date!=='' && type!=='' && name !== '' && amount > 0) {
       var index = expenses.findIndex(e=>e.id===id);
       expenses.splice(index,1);
+      amount = parseInt(amount).toFixed(2);
       const expense = { id, date, type, name, amount }
       setExpenses([...expenses, expense])
       setId(id + 1);
@@ -57,7 +58,6 @@ function App() {
 
   const handleExpenses = (event, item) => {
     event.preventDefault();
-    console.log("event", item);
     setDate(item.date);
     setType(item.type);
     setName(item.name);
@@ -77,7 +77,9 @@ function App() {
     }
 
   }
-
+  totalAmount = totalAmount.toFixed(2);
+  expense = expense.toFixed(2);
+  income = income.toFixed(2);
   useEffect(() => {
     localStorage.setItem('expenses', JSON.stringify(expenses))
   }, [expenses])
@@ -112,7 +114,7 @@ function App() {
             </span>
           </p>
         </div>
-        <Form
+        <WalletForm
           date={date} 
           type={type}
           name={name}
