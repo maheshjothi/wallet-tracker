@@ -36,8 +36,9 @@ function App() {
     //check whether the name is not empty and the amount is not negative
     if (date!=='' && type!=='' && name !== '' && amount > 0) {
       var index = expenses.findIndex(e=>e.id===id);
-      expenses.splice(index,1);
+      if(index >= 0) expenses.splice(index,1);
       amount = parseInt(amount).toFixed(2);
+      
       const expense = { id, date, type, name, amount }
       setExpenses([...expenses, expense])
       setId(id + 1);
